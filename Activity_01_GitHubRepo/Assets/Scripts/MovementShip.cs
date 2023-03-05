@@ -27,8 +27,9 @@ public class MovementShip : MonoBehaviour
     private Vector2 _upperright;
     private float camX;
 
-    
+    private float score;
 
+    
     void Start()
     {
         // Assert.IsNotNull(_transform, "Es necesario para el movimiento el tener un transform");
@@ -101,6 +102,14 @@ public class MovementShip : MonoBehaviour
         else if (transform.position.y < -4.6)
             transform.position = new Vector3(transform.position.x, -4.59f, transform.position.z);
         yield return new WaitForSeconds(.5f);
-
     }
+
+    public void Score(float points){
+        score += points;
+    }
+
+    public float GetScore(){
+        return score; 
+    }
+
 }

@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
             0
         );
     }
+
+    
     // void OnTriggerEnter(Collider c){
     //     if(c.gameObject.CompareTag("Shot")){
     //         Destroy(c.gameObject);

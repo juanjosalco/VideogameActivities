@@ -6,10 +6,15 @@ using UnityEngine.Assertions;
 public class Proyectile : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 5;
+    private float _speed = 5f;
 
     [SerializeField]
-    private float _lifeTime = 3;
+    private float _lifeTime = 3f;
+
+    private float points = 10f;
+
+    //Declarar el objeto de tipo MovementShip
+    MovementShip mvship;  
 
     // private GUIManager _gui; 
     void Start(){
@@ -21,6 +26,10 @@ public class Proyectile : MonoBehaviour
         o componentes
         
         */
+        // Obtenemos de Ship el componente Script - MovementShip
+        mvship = GameObject.Find("Ship").GetComponent<MovementShip>();
+        
+        
         Destroy(gameObject, _lifeTime);
 
         //ESTO VA A CAMBIAR
@@ -57,8 +66,11 @@ public class Proyectile : MonoBehaviour
     void OnTriggerEnter(Collider e){
         if(e.gameObject.CompareTag("Enemy")){
             Debug.Log("ENEMY HIT");
+            mvship.Score(points);
             Destroy(e.gameObject);
             Destroy(gameObject);
+
         }
     }
+
 }
